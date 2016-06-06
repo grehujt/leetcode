@@ -17,3 +17,6 @@
 ---
 
 INFO: please use **zero-based** indices.
+
+> tips:
+> * combination from itertools might be appealing to you, but indexOf has implicit loop
