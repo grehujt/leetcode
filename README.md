@@ -1,3 +1,3 @@
 # leetcode
 
-### this repo are the container for my leetcode in Python
+### this repo contains my solutions to leetcode in Python
