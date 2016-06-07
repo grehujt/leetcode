@@ -19,7 +19,6 @@ class Solution(object):
         carry = 0
         cur1 = l1
         cur2 = l2
-        v = l1.val + l2.val
         head = ListNode(-1)
         curNode = head
         while cur1 is not None and cur2 is not None:
