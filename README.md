@@ -6,6 +6,6 @@
 >
 > 1. code readability
 >
-> 2. runtime speed
+> 2. time complexity
 >
-> 3. using less code
+> 3. code simplicity
