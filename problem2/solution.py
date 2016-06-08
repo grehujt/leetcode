@@ -11,14 +11,9 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
-        if l1 is None:
-            return l2
-        if l2 is None:
-            return l1
         carry = 0
         cur1 = l1
         cur2 = l2
-        v = l1.val + l2.val
         head = ListNode(-1)
         curNode = head
         while cur1 is not None or cur2 is not None:
