@@ -4,17 +4,11 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        dq = collections.deque()
-        charSet = set()
-        maxLen = 0
-        for c in s:
-            if c in charSet:
-                while True:
-                    leftMostChar = dq.popleft()
-                    charSet.remove(leftMostChar)
-                    if leftMostChar == c:
-                        break
-            charSet.add(c)
-            dq.append(c)
-            maxLen = len(dq) if maxLen < len(dq) else maxLen
+        lastOccur = {}
+        j, maxLen = 0, 0
+        for i, c in enumerate(s):
+            if c in lastOccur:
+                j = max(j, lastOccur[c] + 1)
+            lastOccur[c] = i
+            maxLen = max(maxLen, i - j + 1)
         return maxLen
