@@ -16,3 +16,4 @@
 > * dynamic programming
 > * hash
 > * 2 pointers
+> * O(n)
