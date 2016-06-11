@@ -16,4 +16,8 @@
 >
 > * quick sort
 
-[see detail analysis](analysis.md)
+---
+
+### solution
+
+[see my analysis on this problem](analysis.md)
