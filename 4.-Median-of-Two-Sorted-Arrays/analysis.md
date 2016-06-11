@@ -70,7 +70,7 @@
   >
   >       5. The range of mid2\*: [mid1+mid2**+1**, m+mid2].
   >
-  >          > 1. Same as case 2 of mid1\*, when mid1\* + 1 == mid2\*, no element of high(L1) gets to low(L\*), the lower bound is hit, which equals to mid1+mid2**+1** *(this +1 is for mid1\* itself, caution here)*.
+  >          > 1. Same as case 2 of mid1\*, when mid1\* + 1 == mid2\*, no element of high(L1) gets to low(L\*), the lower bound is hit, which equals to mid1+mid2+1 *(mid1\* = mid1+mid2)*.
   >          > 2. Same as case 1 of mid1\*, when max(L1) < L2[mid2], no element of high(L1) gets to high(L\*), the upper bound is hit, which equals to m+mid2.
   >
   >       **Sumup:**
