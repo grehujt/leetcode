@@ -10,8 +10,6 @@ class Solution(object):
                 return l2[k]
             if len(l2) == 0:
                 return l1[k]
-            if k == 0:
-                return min(l1[0], l2[0])
             mid1 = len(l1) >> 1
             mid2 = len(l2) >> 1
             if mid1 + mid2 < k:
