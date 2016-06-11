@@ -96,7 +96,7 @@
 
 * Result
 
-  * [code](https://github.com/grehujt/leetcode/blob/master/4.-Median-of-Two-Sorted-Arrays/solution.py)
+  * [code](solution.py)
 
   * leetcode time distribution. *(just for fun;))*
 
