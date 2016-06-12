@@ -3,9 +3,13 @@
 * Basic setups
 
   + We have 2 **sorted** lists, L1 and L2.
-  + L1 has m elements, and L2 has n elements, m and n can be different. 
+  + 
+  + L1 has m elements, and L2 has n elements, m and n can be different.
+  +  
   + Our goal is to find the median of the union of L1 and L2.
+  + 
   + O(log(m+n)) time complexity algorithm is required.
+  + 
 
 ---
   
@@ -34,7 +38,7 @@
   - Base case:
     + If L1 is empty, return L2[k].
     + If L2 is empty, return L1[k]. _(Note: L1 and L2 can not both be empty, or it violates 0 <= k < m+n.)_
-    +If k==0, return min(L1[0], L2[0]). _(Actually this is not a necessary base case, but this does save some recursive calls)_
+    + If k==0, return min(L1[0], L2[0]). _(Actually this is not a necessary base case, but this does save some recursive calls)_
   
   - Reduction steps:
     + Find the middle indices of L1 and L2, (note that we make no assumptions on L1 and L2 having odd or even number of elements, since the algorithm works in all cases):
