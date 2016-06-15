@@ -8,11 +8,11 @@
 
 ### Analysis
 
-1. Brute-force, iterate all possible substring, O(n^3), 100% TLE
+1. Brute-force, iterate all possible substring, **O(n^3)**, 100% TLE.
 
-2. Dynamice programming, use a 2d boolean array dp, if dp[i][j] == True, then s[i:j+1] is palindromic. In this case, we have to iterate all possible length of substring as well as starting points, so it is a O(n^2) solution.
+2. Dynamice programming, use a 2d boolean array dp, if dp[i][j] == True, then s[i:j+1] is palindromic. In this case, we have to iterate all possible length of substring as well as starting points, so it is a **O(n^2)** solution.
 
-```python
+```python:n
 class Solution(object):
     def longestPalindrome(self, s):
         """
