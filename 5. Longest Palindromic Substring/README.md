@@ -12,7 +12,7 @@
 
 2. Dynamice programming, use a 2d boolean array dp, if dp[i][j] == True, then s[i:j+1] is palindromic. In this case, we have to iterate all possible length of substring as well as starting points, so it is a **O(n^2)** solution.
 
-```python:n
+```python
 class Solution(object):
     def longestPalindrome(self, s):
         """
