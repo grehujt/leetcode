@@ -22,6 +22,8 @@ string convert(string text, int nRows);
 
 ### Solution
 
+- O(len(s)) in both time and space
+
 ```python
 class Solution(object):
     def convert(self, s, numRows):
@@ -42,4 +44,27 @@ class Solution(object):
                 flag = not flag
             i += 1
         return ''.join(''.join(s) for s in arrs)
+```
+
+- O(len(s)) in time and space, 1 pass
+
+```python
+class Solution(object):
+    def convert(self, s, numRows):
+        """
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        """
+        if numRows < 2:
+            return s
+        tmp = []
+        cycle = (numRows << 1) - 2
+        for i in xrange(numRows):
+            for j in xrange(i, len(s), cycle):
+                tmp.append(s[j])
+                nextJ = (j - i) + cycle - i
+                if i!=0 and i!=numRows-1 and nextJ<len(s):
+                    tmp.append(s[nextJ])
+        return ''.join(tmp)
 ```
