@@ -24,7 +24,8 @@ class Solution(object):
         result = 0
         while x > 0:
             result = result * 10 + (x % 10)
-            if result>0x7fffffff: return 0
+            if result > 0x7fffffff:
+                return 0
             x /= 10
         return -result if isNegative else result
 ```
