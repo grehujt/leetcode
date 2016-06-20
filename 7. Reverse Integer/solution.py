@@ -1,18 +1,3 @@
-# 7. Reverse Integer
-
-### Problem:
-
-- Reverse digits of an integer.
-
-- Example 1: x = 123, return 321
-
-- Example 2: x = -123, return -321
-
----
-
-### Solution:
-
-```python
 class Solution(object):
     def reverse(self, x):
         """
@@ -27,4 +12,3 @@ class Solution(object):
             if result>0x7fffffff: return 0
             x /= 10
         return -result if isNegative else result
-```
