@@ -31,3 +31,18 @@ class Solution(object):
             x /= 10
         return -result if isNegative else result
 ```
+
+```python
+class Solution(object):
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        isNegative = True if x < 0 else False
+        tmp = str(x)[1:] if isNegative else str(x)
+        result = int(tmp[::-1])
+        if result > 0x7fffffff:
+            return 0
+        return -result if isNegative else result
+```
