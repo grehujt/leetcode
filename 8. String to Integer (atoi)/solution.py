@@ -9,9 +9,9 @@ class Solution(object):
         while i < len(str) and str[i] == ' ': i += 1
         if len(str) == i: return 0
         isNegative = str[i]=='-'
-        i += 1 if str[i] == '-' or str[i] == '+' else 0
+        i += 1 if str[i]=='-' or str[i]=='+' else 0
         cnt = 0
-        while i < len(str) and cnt < 10:
+        while i < len(str) and cnt <= 10:
             t = ord(str[i]) - ord('0')
             if 0 <= t <= 9:
                 result = result * 10 + t
