@@ -13,10 +13,7 @@ class Solution(object):
                 if p[pi-1] != '*':
                     dp[si][pi] = si>0 and dp[si-1][pi-1] and (s[si-1]==p[pi-1] or p[pi-1]=='.')
                 else:
-                    if dp[si][pi-1] or dp[si][pi-2]:
-                        dp[si][pi] = True
-                    else:
-                        dp[si][pi] = si>0 and dp[si-1][pi] and (s[si-1]==p[pi-2] or p[pi-2]=='.')
+                    dp[si][pi] = dp[si][pi-2] or (si>0 and dp[si-1][pi] and (s[si-1]==p[pi-2] or p[pi-2]=='.'))
         return dp[lenS][lenP]
 
 print Solution().isMatch('aa','c*a*')

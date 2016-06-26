@@ -76,12 +76,8 @@ isMatch("aab", "c*a*b") → true
                     if p[pi-1] != '*':
                         dp[si][pi] = si>0 and dp[si-1][pi-1] and (s[si-1]==p[pi-1] or p[pi-1]=='.')
                     else:  # handle '*'
-                        if dp[si][pi-1] or dp[si][pi-2]:
-                            # matches zero time or once
-                            dp[si][pi] = True
-                        else:
-                            # matches more than once
-                            dp[si][pi] = si>0 and dp[si-1][pi] and (s[si-1]==p[pi-2] or p[pi-2]=='.')
+                        # matches zero time or more than once
+                        dp[si][pi] = dp[si][pi-2] or (si>0 and dp[si-1][pi] and (s[si-1]==p[pi-2] or p[pi-2]=='.'))
             return dp[lenS][lenP]
     ```
 
