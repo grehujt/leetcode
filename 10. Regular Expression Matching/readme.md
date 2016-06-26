@@ -52,7 +52,7 @@ class Solution(object):
 
 **Time complexity analysis:**
 - Worst case:
-> Worst cases happen when '\*' occurs in all the odd positions, e.g. 'q\*w\*c\*...'. And in these case, we split the original problem into 2 sub-problem, _match(s, p, si, pi+2) and _match(s, p, si+1, pi)), so __T(n) = 2T(n-1) + 1, which results in O(2^n)__. 
+> Worst cases happen when '\*' occurs in all the odd positions, e.g. 'q\*w\*c\*...'. And in these case, we split the original problem into 2 sub-problem, _match(s, p, si, pi+2) and _match(s, p, si+1, pi)), so **T(n) = 2T(n-1) + 1, which results in O(2^n)**. 
 - Best case:
 > Likewise, best cases happen when no '\*' occurs. In this case, __T(n) = T(n-1) + 1, which results in O(n)__.
 
