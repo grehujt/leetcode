@@ -69,4 +69,4 @@ class Solution(object):
         return s[start: start + maxLen - 1]
     ```
 
-    [some more algorhms](https://leetcode.com/articles/longest-palindromic-substring/).
+    [some more algorithms](https://leetcode.com/articles/longest-palindromic-substring/).
