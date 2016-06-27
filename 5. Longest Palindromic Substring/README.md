@@ -29,6 +29,7 @@
                 # takes care of length of 2
                 dp[i][i-1] = True
             l, r = 0, 0
+            # top-down DP
             for j in xrange(2, length+1):
                 for i in xrange(length-j+1):
                     if s[i] == s[i+j-1] and dp[i+1][i+j-2]:
@@ -37,8 +38,32 @@
                             l = i
                             r = i+j-1
             return s[l:r+1]
+
+
+    class Solution(object):
+        def longestPalindrome(self, s):
+            """
+            :type s: str
+            :rtype: str
+            """
+            l = len(s)
+            if l<2: return s
+            dp = [[False]*l for i in xrange(l)]
+            start, maxLen = 0, 1
+            dp[0][0] = True
+            for i in xrange(1, l):
+                dp[i][i] = True
+                dp[i][i-1] = True
+            # bottom-up DP
+            for i in xrange(l-2,-1,-1):
+                for j in xrange(l-1, i, -1):
+                    dp[i][j] = dp[i+1][j-1] and s[i]==s[j]
+                    if dp[i][j] and j-i+1 > maxLen:
+                        start = i
+                        maxLen = j-i+1
+            return s[start: start+maxLen]
     ```
-    
+
     But it still gets TLE...
 
 3. O(n) solution
