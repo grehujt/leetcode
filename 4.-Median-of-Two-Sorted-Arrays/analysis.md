@@ -54,10 +54,15 @@
     + Since we are trying to get the k-th element in the union of L1 and L2, we can draw the union list and do some analysis on the **relationships among mid1, mid2 and k**. Let us assume **L1[mid1] <= L2[mid2]** and name our final sorted union list L*.
     ![unionList](unionList.png)
 
+      - Note that all mid1, mid2, k, mid1\*, mid2\* are zero-based indices
+      - L1[mid1] == L\*[mid1\*]
+      - L2[mid2] == L\*[mid2\*]
+
+
     + **Observations:**
       - the range of k: [0, m+n-1].
-      - L1[mid1] == L\*[mid1\*], low(L1) is part of low(L\*).
-      - L2[mid2] == L\*[mid2\*], high(L2) is part of high(L\*).
+      - low(L1) is part of low(L\*).
+      - high(L2) is part of high(L\*).
       - The range of mid1\*: [mid1, mid1+mid2].
       
         1. Lower bound: When min(L2) \> L1[mid1], no element of L2 gets to the low(L\*), low(L\*)==low(L1), the lower bound is hit, which is mid1.
