@@ -20,5 +20,3 @@ class Solution(object):
             i += 1
         start = (maxCenter - maxLen + 1) >> 1
         return s[start: start + maxLen - 1]
-
-print Solution().longestPalindrome('cacc')
