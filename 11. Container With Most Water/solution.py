@@ -7,10 +7,15 @@ class Solution(object):
         if len(height) < 2: return 0
         l, r, largest = 0, len(height)-1, -1
         while l < r:
-            area = min(height[l], height[r]) * (r - l)
+            heightL, heightR = height[l], height[r]
+            area = min(heightL, heightR) * (r - l)
             largest = max(area, largest)
-            if height[l] < height[r]:
+            if heightL < heightR:
                 l += 1
+                while height[l+1] < heightL:
+                    l += 1
             else:
                 r -= 1
+                while height[r-1] < heightR:
+                    r -= 1
         return largest
