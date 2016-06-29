@@ -27,3 +27,31 @@ class Solution(object):
 
 TLE..
 
+- O(n) DP solution:
+
+    + The area between height[i] and height[j] (j>i) can be derived by: min(height[i], height[j]) * (j - i).
+
+    + Let dp[l][r] represent max area from height[l:r+1], and clearly dp[l][r] is maximum of:
+        1. dp[l+1][r], if height[l] < height[r], in this case height[l] is the bottleneck.
+        2. Likewise, dp[l][r-1], if height[l] > height[r]. If height[l] == height[r], dp[l+1][r] == dp[l][r-1], we can combine this case to either case 1 or case 2.
+        3. dp[l][r], clearly is one possibility.
+
+
+```python
+class Solution(object):
+    def maxArea(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        if len(height) < 2: return 0
+        l, r, largest = 0, len(height)-1, -1
+        while l < r:
+            area = min(height[l], height[r]) * (r - l)
+            largest = max(area, largest)
+            if height[l] < height[r]:
+                l += 1
+            else:
+                r -= 1
+        return largest
+```
