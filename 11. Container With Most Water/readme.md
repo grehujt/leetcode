@@ -73,11 +73,11 @@ class Solution(object):
             largest = max(area, largest)
             if heightL < heightR:
                 l += 1
-                while height[l+1] < heightL:  # skip impossible case
+                while height[l] < heightL:
                     l += 1
             else:
                 r -= 1
-                while height[r-1] < heightR:  # skip impossible case
+                while height[r] < heightR:
                     r -= 1
         return largest
 ```
