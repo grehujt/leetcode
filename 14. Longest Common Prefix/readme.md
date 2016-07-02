@@ -24,6 +24,10 @@ class Solution(object):
         return strs[0][:i]
 ```
 
+Time complexity: O(mn), n strs with average length of m.
+
+---
+
 Accelerated greedy solution:
 
 ```python
@@ -43,4 +47,19 @@ class Solution(object):
         return s
 ```
 
+Time complexity: same O(mn).
+
 ![png](./pic.png)
+
+---
+
+Divide and conquer solution:
+- Divide: cut the strs array in half
+- Conquer: calculate the long common prefix for sub-parts.
+- Combine: merge the results from sub-parts.
+
+Time complexity: T(n) = 2T(n/2) + O(m), which is still O(mn).
+
+---
+
+[More algorithms](https://leetcode.com/articles/longest-common-prefix/) on this problem.
