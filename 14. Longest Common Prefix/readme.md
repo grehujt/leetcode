@@ -14,13 +14,33 @@ class Solution(object):
         """
         if len(strs) < 1: return ''
         elif len(strs) == 1: return strs[0]
-        s, i, jump = strs[0], 0, False
+        s, i, j = strs[0], 0, 1
         while i < len(s):
-            for j in xrange(1, len(strs)):
+            while j < len(strs):
                 if i >= len(strs[j]) or strs[j][i] != s[i]:
-                    jump = True
-                    break
-            if jump: break
+                    return strs[0][:i]
             i += 1
+            j += 1
         return strs[0][:i]
 ```
+
+Accelerated greedy solution:
+
+```python
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        if len(strs) < 1: return ''
+        elif len(strs) == 1: return strs[0]
+        s = strs[0]
+        for i in xrange(1, len(strs)):
+            l = min(len(s), len(strs[i]))
+            while strs[i][:l] != s[:l]: l -= 1
+            s = s[:l]
+        return s
+```
+
+![png](./pic.png)
