@@ -11,3 +11,28 @@
 > 
 >    After removing the second node from the end, the linked list becomes 1->2->3->5.
 
+## Solution
+
+```python
+class Solution(object):
+    def removeNthFromEnd(self, head, n):
+        """
+        :type head: ListNode
+        :type n: int
+        :rtype: ListNode
+        """
+        tmp = []
+        cur = head
+        while cur:
+            tmp.append(cur)
+            cur = cur.next
+        l = len(tmp)
+        if n == l:
+            return head.next
+        elif n == 1:
+            tmp[-2].next = None
+            return head
+        else:
+            tmp[l-n-1].next = tmp[l-n+1]
+            return head
+```
