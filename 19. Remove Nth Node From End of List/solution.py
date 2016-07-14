@@ -12,17 +12,13 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        tmp = []
-        cur = head
-        while cur:
-            tmp.append(cur)
-            cur = cur.next
-        l = len(tmp)
-        if n == l:
-            return head.next
-        elif n == 1:
-            tmp[-2].next = None
-            return head
-        else:
-            tmp[l-n-1].next = tmp[l-n+1]
-            return head
+        dummy = ListNode(0)
+        dummy.next = head
+        first, second = dummy, dummy
+        for i in xrange(n):
+            first = first.next
+        while first.next:
+            first = first.next
+            second = second.next
+        second.next = second.next.next
+        return dummy.next

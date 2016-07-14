@@ -13,6 +13,8 @@
 
 ## Solution
 
+- O(n) in both time and space:
+
 ```python
 class Solution(object):
     def removeNthFromEnd(self, head, n):
@@ -36,3 +38,26 @@ class Solution(object):
             tmp[l-n-1].next = tmp[l-n+1]
             return head
 ```
+
+- O(n) in time, O(1) in space, [reference](https://leetcode.com/articles/remove-nth-node-end-list/):
+
+```python
+class Solution(object):
+    def removeNthFromEnd(self, head, n):
+        """
+        :type head: ListNode
+        :type n: int
+        :rtype: ListNode
+        """
+        dummy = ListNode(0)
+        dummy.next = head
+        first, second = dummy, dummy
+        for i in xrange(n):
+            first = first.next
+        while first.next:
+            first = first.next
+            second = second.next
+        second.next = second.next.next
+        return dummy.next
+```
+
