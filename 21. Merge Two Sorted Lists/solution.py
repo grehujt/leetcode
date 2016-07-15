@@ -11,20 +11,37 @@ class Solution(object):
         :type l2: ListNode
         :rtype: ListNode
         """
+        def cont(cur, l1 ,l2):
+            if l1 is None:
+                cur.next = l2
+                return
+            if l2 is None:
+                cur.next = l1
+                return
+            if l1.val <= l2.val:
+                cur.next = l1
+                cont(cur.next, l1.next, l2)
+            else:
+                cur.next = l2
+                cont(cur.next, l1, l2.next)
+
         head = ListNode(0)
         cur = head
-        while l1 or l2:
-            v1 = l1.val if l1 is not None else None
-            v2 = l2.val if l2 is not None else None
-            if v1 is not None and v2 is not None:
-                if v1 <= v2:
-                    cur.next = l1
-                    l1 = l1.next
-                else:
-                    cur.next = l2
-                    l2 = l2.next
-                cur = cur.next
-            else:
-                cur.next = l1 if v1 is not None else l2
-                break
+        cont(cur, l1, l2)
+        # head = ListNode(0)
+        # cur = head
+        # while l1 or l2:
+        #     v1 = l1.val if l1 is not None else None
+        #     v2 = l2.val if l2 is not None else None
+        #     if v1 is not None and v2 is not None:
+        #         if v1 <= v2:
+        #             cur.next = l1
+        #             l1 = l1.next
+        #         else:
+        #             cur.next = l2
+        #             l2 = l2.next
+        #         cur = cur.next
+        #     else:
+        #         cur.next = l1 if v1 is not None else l2
+        #         break
         return head.next
