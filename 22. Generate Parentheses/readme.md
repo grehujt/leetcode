@@ -15,7 +15,7 @@
 
 ## Solution
 
-- Backtracking:
+- Backtracking, time complexity O(n!):
 
 ```python
 class Solution(object):
@@ -54,11 +54,9 @@ class Solution(object):
         result = []
         fill(0)
         return result
-
-print Solution().generateParenthesis(10)
 ```
 
-- Binary tree encoding:
+- Binary tree encoding, time complexity T(n) = 2T(n-1) + O(1) --> O(2^n):
 
 ```python
 class Solution(object):
