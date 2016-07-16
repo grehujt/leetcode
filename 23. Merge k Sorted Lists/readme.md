@@ -58,3 +58,32 @@ class Solution(object):
 > if m = theta(n), this is nlog(n);
 > 
 > else, max(O(n), O(m)).
+
+- Heap solution:
+
+```python
+class Solution(object):
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        from heapq import heapify, heappop, heapreplace
+        dummy = ListNode(0)
+        cur = dummy
+        h = [(n.val, n) for n in lists if n]
+        heapify(h)  # O(n)
+        while h:  #O(n)
+            _, n = h[0]
+            if n.next is None:
+                heappop(h)
+            else:
+                heapreplace(h, (n.next.val, n.next))  # O(log(m))
+            cur.next = n
+            cur = cur.next
+        return dummy.next
+```
+
+Time complexity: O(nlog(m)), where n is the total num of nodes and m is the depth of the heap.
+
+![png](perf.png)
