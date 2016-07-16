@@ -15,7 +15,7 @@
 
 ## Solution
 
-- Backtracking, time complexity O(n!):
+- Backtracking, time complexity O(n*2^n):
 
 ```python
 class Solution(object):
