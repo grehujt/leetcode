@@ -84,6 +84,6 @@ class Solution(object):
         return dummy.next
 ```
 
-Time complexity: O(nlog(m)), where n is the total num of nodes and m is the depth of the heap.
+Time complexity: O(nlog(m)), where n is the total num of nodes and m is the number of lists.
 
 ![png](perf.png)
