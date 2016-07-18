@@ -26,21 +26,15 @@
             :rtype: ListNode
             """
             if head is None: return None
-            flag, dummy = True, ListNode(0)
+            dummy = ListNode(0)
             dummy.next = head
-            pre, cur, next = dummy, head, head.next
-            while next:
-                if flag:
-                    pre.next = next
-                    cur.next = next.next
-                    next.next = cur
-                    pre = next
-                    next = cur.next
-                else:
-                    pre = cur
-                    cur = next
-                    next = next.next
-                flag = not flag
+            cur = dummy
+            while cur.next and cur.next.next:
+                first, second = cur.next, cur.next.next
+                first.next = second.next
+                cur.next = second
+                second.next = first
+                cur = first
             return dummy.next
     ```
 
