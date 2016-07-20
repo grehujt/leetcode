@@ -11,13 +11,19 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
-        def reverse(start, end):
+        def reverse(head, end):
+            start, s2 = head.next, head.next
+            b2 = end.next
+            end.next = None
             pre, cur = start, start.next
             while cur is not None:
                 pre.next = cur.next
                 cur.next = start
                 start = cur
                 cur = pre.next
+            head.next = start
+            s2.next = b2
+            return s2
 
         dummy = ListNode(0)
         dummy.next = head
@@ -25,13 +31,7 @@ class Solution(object):
         while stop:
             if i == k:
                 i = 0
-                beg, end, next = start.next, stop, stop.next
-                end.next = None
-                reverse(beg, end)
-                new = start.next
-                start.next.next = next
-                start.next = stop
-                start, stop = new, new
+                start = stop = reverse(start, stop)
             else:
                 i += 1
                 stop = stop.next
@@ -57,6 +57,6 @@ print 'input1:',
 print_nodes(a)
 print
 # c = gen_nodes
-t = Solution().reverseKGroup(a,4)
+t = Solution().reverseKGroup(a,2)
 print 'result',
 print_nodes(t)
