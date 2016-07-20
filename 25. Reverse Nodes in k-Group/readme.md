@@ -61,6 +61,8 @@ class Solution(object):
 
 - O(n) in time & space:
 
+Note that this solution is taken from [here](https://discuss.leetcode.com/category/33/reverse-nodes-in-k-group).
+
 ```python
 class Solution(object):
     def reverseKGroup(self, head, k):
