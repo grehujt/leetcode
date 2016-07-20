@@ -11,31 +11,20 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
-        def reverse(head, end):
-            start, s2 = head.next, head.next
-            b2 = end.next
-            end.next = None
-            pre, cur = start, start.next
-            while cur is not None:
-                pre.next = cur.next
-                cur.next = start
-                start = cur
-                cur = pre.next
-            head.next = start
-            s2.next = b2
-            return s2
-
-        dummy = ListNode(0)
-        dummy.next = head
-        i, start, stop = 0, dummy, dummy
-        while stop:
-            if i == k:
-                i = 0
-                start = stop = reverse(start, stop)
-            else:
-                i += 1
-                stop = stop.next
-        return dummy.next
+        cur, cnt = head, 0
+        while cur is not None and cnt < k:
+            cur = cur.next
+            cnt += 1
+        if cnt == k:
+            cur = self.reverseKGroup(cur, k)
+            while k:
+                tmp = head.next
+                head.next = cur
+                cur = head
+                head = tmp
+                k -= 1
+            head = cur
+        return head
 
 def print_nodes(head):
     while head:

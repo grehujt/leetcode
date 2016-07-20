@@ -16,6 +16,8 @@
 
 ## Solution
 
+- O(n) time & O(1) space:
+
 ```python
 # Definition for singly-linked list.
 class ListNode(object):
@@ -55,4 +57,30 @@ class Solution(object):
                 i += 1
                 stop = stop.next
         return dummy.next
+```
+
+- O(n) in time & space:
+
+```python
+class Solution(object):
+    def reverseKGroup(self, head, k):
+        """
+        :type head: ListNode
+        :type k: int
+        :rtype: ListNode
+        """
+        cur, cnt = head, 0
+        while cur is not None and cnt < k:
+            cur = cur.next
+            cnt += 1
+        if cnt == k:
+            cur = self.reverseKGroup(cur, k)
+            while k:
+                tmp = head.next
+                head.next = cur
+                cur = head
+                head = tmp
+                k -= 1
+            head = cur
+        return head
 ```
