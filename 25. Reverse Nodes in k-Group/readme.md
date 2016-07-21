@@ -86,3 +86,44 @@ class Solution(object):
             head = cur
         return head
 ```
+
+- iterative version of solution 2, O(n) time & O(1) space:
+
+```python
+class Solution(object):
+    def reverseKGroup(self, head, k):
+        """
+        :type head: ListNode
+        :type k: int
+        :rtype: ListNode
+        """
+        def rev(start, stop, k):
+            while k:
+                tmp = start.next
+                start.next = stop
+                stop = start
+                start = tmp
+                k -= 1
+            return stop, start
+
+        dummy = ListNode(0)
+        dummy.next = head
+        preHead = None
+        cur, cnt = head, 0
+        while cur is not None:
+            while cur is not None and cnt < k:
+                cur = cur.next
+                cnt += 1
+            if cnt == k:
+                beg, end = rev(head, cur, cnt)
+                if preHead:
+                    preHead.next = beg
+                else:
+                    dummy.next = beg
+                cnt = 0
+                preHead = head
+                head = cur = end
+        return dummy.next
+```
+
+![png](perf.png)
