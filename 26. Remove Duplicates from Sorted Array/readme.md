@@ -9,3 +9,22 @@
 > 
 > Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn't matter what you leave beyond the new length.
 
+## Solution
+
+```python
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if len(nums) < 2:
+            return len(nums)
+        i, j, cnt = 0, 1, len(nums)
+        while j < cnt:
+            if nums[i] != nums[j]:
+                nums[i+1] = nums[j]
+                i += 1
+            j += 1
+        return i+1
+```
