@@ -5,13 +5,14 @@ class Solution(object):
         :type val: int
         :rtype: int
         """
-        i, j, n = 0, 0, len(nums)
-        while j < n:
-            if nums[j] != val:
-                nums[i] = nums[j]
+        i, n = 0, len(nums)
+        while i < n:
+            if nums[i] == val:
+                nums[i] = nums[n-1]
+                n -= 1
+            else:
                 i += 1
-            j += 1
-        return i
+        return n
 
 nums = [4,1,3,3,3,2,3]
 x = Solution().removeElement(nums,3)
