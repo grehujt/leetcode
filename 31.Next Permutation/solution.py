@@ -1,20 +1,3 @@
-# Next Permutation
-
-## Problem
-- Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
-- If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).
-- The replacement must be in-place, do not allocate extra memory.
-
-> Example:
-> 
-> 1,2,3 → 1,3,2
-> 
-> 3,2,1 → 1,2,3
-> 
-> 1,1,5 → 1,5,1
-
-## Solution
-```python
 class Solution(object):
     def nextPermutation(self, nums):
         """
@@ -27,7 +10,7 @@ class Solution(object):
                 left = i-1
                 break
         if left is not None:
-            for i in xrange(len(nums)-1, -1, -1):  ## optimization space!! [left+1, end) is sorted, binary search can be used here
+            for i in xrange(len(nums)-1, -1, -1):
                 if nums[i] > nums[left]:
                     nums[left], nums[i] = nums[i], nums[left]
                     break
@@ -39,7 +22,6 @@ class Solution(object):
                 right -= 1
         else:
             nums.sort()
-```
+        # print nums
 
-**Finally, first 100%**
-![png](perf/png)
+Solution().nextPermutation([5,4,7,5,3,2])
