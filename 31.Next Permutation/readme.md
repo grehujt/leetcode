@@ -42,4 +42,4 @@ class Solution(object):
 ```
 
 **Finally, first 100%**
-![png](perf/png)
+![png](perf.png)
