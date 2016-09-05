@@ -10,10 +10,18 @@ class Solution(object):
                 left = i-1
                 break
         if left is not None:
-            for i in xrange(len(nums)-1, -1, -1):
-                if nums[i] > nums[left]:
-                    nums[left], nums[i] = nums[i], nums[left]
-                    break
+            beg, end = left+1, len(nums)-1
+            while beg+1 < end:
+                mid = (beg+end) >> 1
+                if nums[mid] > nums[left]:
+                    beg = mid
+                else:
+                    end = mid
+            if nums[end] > nums[left]:
+                nums[end], nums[left] = nums[left], nums[end]
+            else:
+                nums[beg], nums[left] = nums[left], nums[beg]
+
             left += 1
             right = len(nums)-1
             while left < right:
