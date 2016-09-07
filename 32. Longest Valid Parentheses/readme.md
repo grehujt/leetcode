@@ -7,3 +7,7 @@
 
 ##Solution
 TODO
+
+stack approach failed
+
+try dp
