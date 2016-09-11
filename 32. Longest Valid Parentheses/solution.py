@@ -4,14 +4,17 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        size = len(s)
+        stack = []
         maxCnt = 0
-        dp = [0] * (size+1)
-        for i in xrange(1, size+1):
-            if s[i-1] == ')':
-                j = i-2-dp[i-1]
-                dp[i] = dp[i-1]+dp[j]+2 if j>=0 and s[j]=='(' else 0
-                maxCnt = max(maxCnt, dp[i])
+        for i in xrange(len(s)):
+            if s[i] == '(':
+                stack.append((i, 'l'))
+            else:
+                if not stack or stack[-1][1] == 'r':
+                    stack.append((i, 'r'))
+                else:
+                    stack.pop()
+                    maxCnt = max(maxCnt, i+1 if not stack else i-stack[-1][0])
         return maxCnt
 
 print Solution().longestValidParentheses('((()))()')
