@@ -56,3 +56,33 @@ class Solution(object):
 **key points:**
 - find the rotation points in O(log(n))
 - find the target using binary search in the proper section
+
+## Refined solution
+```python
+class Solution(object):
+    def search(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        beg, end = 0, len(nums)-1
+        while beg <= end:
+            mid = (beg+end) >> 1
+            if nums[mid] == target:
+                return mid
+            if nums[beg] <= nums[mid]:
+                if nums[beg] <= target < nums[mid]:
+                    end = mid-1
+                else:
+                    beg = mid+1
+            else:
+                if nums[mid] < target <= nums[end]:
+                    beg = mid+1
+                else:
+                    end = mid-1
+        return -1
+```
+
+**key points:**
+- nums can always devide into 2 parts, sorted one and rotated one.
