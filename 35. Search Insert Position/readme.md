@@ -16,8 +16,9 @@
 > [1,3,5,6], 0 → 0
 
 ## Solution
-- if no duplicate exists, normal binary search would solve the problem
-**the following code handles duplicates as well**
+- if no duplicate exists, normal binary search would solve the problem.
+
+**the following code handles duplicates as well:**
 ```python
 class Solution(object):
     def searchInsert(self, nums, target):
