@@ -4,15 +4,15 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: bool
         """
+        s = set()
         for i in range(9):
-            rowSet, colSet, gridSet = set(), set(), set()
             for j in range(9):
-                colItem = board[i][j]
-                rowItem = board[j][i]
-                gridItem = board[i/3*3+j/3][(i%3)*3+j%3]
-                if (colItem!='.' and colItem in colSet) or (rowItem!='.' and rowItem in rowSet) or (gridItem!='.' and gridItem in gridSet):
-                    return False
-                rowSet.add(rowItem)
-                colSet.add(colItem)
-                gridSet.add(gridItem)
+                n = board[i][j]
+                if n != '.':
+                    rowItem, colItem, gridItem = ('r', i, n), ('c', j, n), (i/3, j/3, n)
+                    if rowItem in s or colItem in s or gridItem in s:
+                        return False
+                    s.add(rowItem)
+                    s.add(colItem)
+                    s.add(gridItem)
         return True
