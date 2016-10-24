@@ -4,27 +4,14 @@ class Solution(object):
         :type height: List[int]
         :rtype: int
         """
-        def calc(curItem, maxH, stack):
-            ret = 0
-            i, h = curItem
-            if stack:
-                if h >= maxH:
-                    while stack:
-                        lastI, lastH = stack.pop()
-                        ret -= lastH
-                    tmp = min(lastH, h) * (i-lastI)
-                    ret += tmp if tmp!=0 else lastH
-            return ret
+        n, ret = len(height), 0
+        lh, rh = [0]*n, [0]*n
+        for i in xrange(1, n):
+            lh[i] = max(lh[i-1], height[i-1])
+        for i in xrange(n-2, -1, -1):
+            rh[i] = max(rh[i+1], height[i+1])
+            minH = min(lh[i], rh[i])
+            ret += minH-height[i] if minH>height[i] else 0
+        return ret
 
-        stack = []
-        result, maxH = 0, -1
-        for i, h in enumerate(height):
-            result += calc((i, h), maxH, stack)
-            maxH = max(h, maxH)
-            stack.append((i, h))
-        if stack:
-            result += calc(stack.pop(), h, stack[::-1])
-        return result
-
-
-print Solution().trap([0, 2, 0, 2])
+print Solution().trap([4, 2, 3, 2])
