@@ -55,4 +55,30 @@ class Solution(object):
         return j == len(p)
 ```
 
+## Solution II with DP (TLE due to )
+```python
+class Solution(object):
+    def isMatch(self, s, p):
+        """
+        :type s: str
+        :type p: str
+        :rtype: bool
+        """
+        lenS, lenP = len(s)+1, len(p)+1
+        cnt = p.count('*')
+        if lenP - cnt > lenS:  # trick to get rid of TLE
+            return False
+        dp = [[False]*lenP for _ in xrange(lenS)]
+        dp[0][0] = True
+        for i in xrange(1, lenP):
+            if p[i-1] == '*':
+                dp[0][i] = dp[0][i-1]
+        for i in xrange(1, lenS):
+            for j in xrange(1, lenP):
+                if p[j-1]=='?' or s[i-1]==p[j-1]:
+                    dp[i][j] = dp[i-1][j-1]
+                elif p[j-1] == '*':
+                    dp[i][j] = dp[i][j-1] or dp[i-1][j]
+        return dp[-1][-1]
+```
 
