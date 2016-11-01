@@ -55,7 +55,7 @@ class Solution(object):
         return j == len(p)
 ```
 
-## Solution II with DP (TLE due to )
+## Solution II with DP
 ```python
 class Solution(object):
     def isMatch(self, s, p):
@@ -70,15 +70,12 @@ class Solution(object):
             return False
         dp = [[False]*lenP for _ in xrange(lenS)]
         dp[0][0] = True
-        for i in xrange(1, lenP):
-            if p[i-1] == '*':
-                dp[0][i] = dp[0][i-1]
-        for i in xrange(1, lenS):
+        for i in xrange(lenS):
             for j in xrange(1, lenP):
-                if p[j-1]=='?' or s[i-1]==p[j-1]:
-                    dp[i][j] = dp[i-1][j-1]
+                if p[j-1]=='?' or (i>0 and s[i-1]==p[j-1]):
+                    dp[i][j] = dp[i-1][j-1]  # will cause probem in other lang which -1 index is not supported
                 elif p[j-1] == '*':
-                    dp[i][j] = dp[i][j-1] or dp[i-1][j]
+                    dp[i][j] = dp[i][j-1] or (i>0 and dp[i-1][j])
         return dp[-1][-1]
 ```
 
