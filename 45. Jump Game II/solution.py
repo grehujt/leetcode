@@ -4,14 +4,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        n, reached, maxR, ret = len(nums), 0, 0, 0
-        for i in xrange(n):
-            if i > reached:
-                if maxR >= n-1: return ret+1
-                reached = maxR
-                ret += 1
-            maxR = max(maxR, i+nums[i])
-        return ret
+        n = len(nums)
+        dp = [0] * n
+        for i in xrange(1, n):
+            dp[i] = min(dp[j] for j in xrange(i) if j+nums[j]>=i) + 1
+        return dp[-1]
 
 
 print Solution().jump([0])
