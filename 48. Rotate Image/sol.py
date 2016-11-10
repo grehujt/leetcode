@@ -1,11 +1,3 @@
-# 48. Rotate Image
-
-## Problem
-- You are given an n x n 2D matrix representing an image.
-- Rotate the image by 90 degrees (clockwise) in-place.
-
-## Solution
-```python
 class Solution(object):
     def rotate(self, matrix):
         """
@@ -21,4 +13,7 @@ class Solution(object):
             matrix[i], matrix[j] = matrix[j], matrix[i]
             i += 1
             j -= 1
-```
+
+a = [[1,2],[3,4]]
+Solution().rotate(a)
+print a
