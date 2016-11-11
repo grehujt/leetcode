@@ -8,11 +8,7 @@ class Solution(object):
         for i in xrange(n):
             for j in xrange(n-i):
                 matrix[i][j], matrix[n-j][n-i] = matrix[n-j][n-i], matrix[i][j]
-        i, j = 0, n
-        while i < j:
-            matrix[i], matrix[j] = matrix[j], matrix[i]
-            i += 1
-            j -= 1
+        matrix.reverse()
 
 a = [[1,2],[3,4]]
 Solution().rotate(a)
