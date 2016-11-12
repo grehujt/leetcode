@@ -15,9 +15,11 @@ class Solution(object):
         n = len(matrix)-1
         for i in xrange(n):
             for j in xrange(n-i):
-                matrix[i][j], matrix[n-j][n-i] = matrix[n-j][n-i], matrix[i][j]
+                matrix[i][j], matrix[~j][~i] = matrix[~j][~i], matrix[i][j]
         matrix.reverse()
 ```
+
+![pic](pic.png)
 
 ## Other Solutions
 **ref:[here](https://discuss.leetcode.com/topic/15295/seven-short-solutions-1-to-7-lines)**
@@ -34,8 +36,8 @@ class Solution:
         n = len(A)
         for i in range(n/2):
             for j in range(n-n/2):  ## careful n-n/2
-                A[i][j], A[~j][i], A[~i][~j], A[j][~i] = \
-                         A[~j][i], A[~i][~j], A[j][~i], A[i][j]
+                A[i][j], A[~j][i], A[~i][~j], A[j][~i] = \  
+                         A[~j][i], A[~i][~j], A[j][~i], A[i][j]  ## ~i == -i-1
 ```
 
 ```python
