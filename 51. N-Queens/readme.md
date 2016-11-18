@@ -56,3 +56,29 @@ class Solution(object):
 ```
 
 ![pic](pic.png)
+
+## bfs solution
+**ref:[here](https://discuss.leetcode.com/topic/20217/fast-short-and-easy-to-understand-python-solution-11-lines-76ms/2)**
+> In this problem, whenever a location (x, y) is occupied, any other locations 
+> 
+> (p, q ) where p + q == x + y or p - q == x - y would be invalid. We can use 
+> 
+> this information to keep track of the indicators (xy_dif and xy_sum ) of the 
+> 
+> invalid positions and then call DFS recursively with valid positions only. 
+
+```python
+class Solution(object):
+    def solveNQueens(self, n):
+        def DFS(queens, xy_dif, xy_sum):
+            p = len(queens)
+            if p==n:
+                result.append(queens)
+                return
+            for q in range(n):
+                if q not in queens and p-q not in xy_dif and p+q not in xy_sum:
+                    DFS(queens+[q], xy_dif|set([p-q]), xy_sum|set([p+q]))  ## memery consumption
+        result = []
+        DFS([], set(), set())
+        return [["."*i + "Q" + "."*(n-i-1) for i in sol] for sol in result]
+```
