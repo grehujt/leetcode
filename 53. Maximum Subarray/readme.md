@@ -39,3 +39,17 @@ class Solution(object):
             continuousSum = max(continuousSum, 0)
         return maxSoFar
 ```
+
+```python
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        preMax = curMax = nums[0]
+        for i in range(1, len(nums)):
+            preMax = max(preMax+nums[i], nums[i])
+            curMax = max(curMax, preMax)
+        return curMax
+```
