@@ -15,4 +15,27 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        continuousSum, maxSoFar = nums[0], nums[0]
+        sumMin = min(0, continuousSum)
+        for i in range(1, len(nums)):
+            continuousSum += nums[i]
+            maxSoFar = max(maxSoFar, continuousSum-sumMin)
+            sumMin = min(sumMin, continuousSum)
+        return maxSoFar
+```
+
+**ref:[here](https://discuss.leetcode.com/topic/3400/simplest-and-fastest-o-n-c-solution)**
+```python
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        continuousSum, maxSoFar = 0, nums[0]
+        for n in nums:
+            continuousSum += n
+            maxSoFar = max(maxSoFar, continuousSum)
+            continuousSum = max(continuousSum, 0)
+        return maxSoFar
 ```
