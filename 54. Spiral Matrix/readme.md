@@ -52,3 +52,32 @@ class Solution(object):
                 break
         return ret
 ```
+
+```python
+class Solution(object):
+    def spiralOrder(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: List[int]
+        """
+        m, n = len(matrix), len(matrix[0]) if len(matrix)>0 else 0
+        rowBeg, rowEnd, colBeg, colEnd, ret = 0, m-1, 0, n-1, []
+        while 1:
+            for i in range(colBeg, colEnd+1):
+                ret.append(matrix[rowBeg][i])
+            rowBeg += 1
+            if rowBeg > rowEnd: break
+            for i in range(rowBeg, rowEnd+1):
+                ret.append(matrix[i][colEnd])
+            colEnd -= 1
+            if colBeg > colEnd: break
+            for i in range(colEnd, colBeg-1, -1):
+                ret.append(matrix[rowEnd][i])
+            rowEnd -= 1
+            if rowBeg > rowEnd: break
+            for i in range(rowEnd, rowBeg-1, -1):
+                ret.append(matrix[i][colBeg])
+            colBeg += 1
+            if colBeg > colEnd: break
+        return ret
+```
