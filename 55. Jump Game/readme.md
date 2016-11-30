@@ -19,4 +19,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
+        n, maxR = len(nums), 0
+        for i in xrange(n):
+            if i > maxR: return False
+            maxR = max(maxR, i+nums[i])
+        return True
 ```
