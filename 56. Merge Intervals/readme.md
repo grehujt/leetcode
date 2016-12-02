@@ -31,8 +31,7 @@ class Solution(object):
             item1 = ret[-1]
             item2 = sortedIntervals[i]
             if item1.end >= item2.start:
-                ret.pop()
-                ret.append(Interval(item1.start, max(item1.end, item2.end)))
+                item1.end = max(item1.end, item2.end)
             else:
                 ret.append(item2)
         return ret
