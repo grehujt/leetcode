@@ -29,17 +29,12 @@ class Solution(object):
         :type newInterval: Interval
         :rtype: List[Interval]
         """
-        if len(intervals) == 0:
-            return [newInterval]
         ioi = bisect.bisect_left([x.start for x in intervals], newInterval.start)
-        tmp = intervals[:ioi] + [newInterval] + intervals[ioi:]
-        ret = [tmp[0]]
-        for i in range(1, len(tmp)):
-            item1 = ret[-1]
-            item2 = tmp[i]
-            if item2.start <= item1.end:
-                item1.end = max(item1.end, item2.end)
+        ret = []
+        for item in intervals[:ioi] + [newInterval] + intervals[ioi:]:
+            if ret and item.start <= ret[-1].end:
+                ret[-1].end = max(ret[-1].end, item.end)
             else:
-                ret.append(item2)
+                ret.append(item)
         return ret
 ```

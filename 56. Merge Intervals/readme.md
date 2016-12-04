@@ -23,16 +23,11 @@ class Solution(object):
         :type intervals: List[Interval]
         :rtype: List[Interval]
         """
-        if len(intervals) < 1:
-            return []
-        sortedIntervals = sorted(intervals, key=operator.attrgetter('start'))
-        ret = [sortedIntervals[0]]
-        for i in range(1, len(sortedIntervals)):
-            item1 = ret[-1]
-            item2 = sortedIntervals[i]
-            if item1.end >= item2.start:
-                item1.end = max(item1.end, item2.end)
+        ret = []
+        for item in sorted(intervals, key=operator.attrgetter('start')):
+            if ret and ret[-1].end >= item.start:
+                ret[-1].end = max(ret[-1].end, item.end)
             else:
-                ret.append(item2)
+                ret += item,
         return ret
 ```
