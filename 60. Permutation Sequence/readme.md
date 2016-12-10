@@ -32,8 +32,8 @@ class Solution(object):
         :type k: int
         :rtype: str
         """
-        facs = [1] * (n+1)
-        for i in range(2, n+1):
+        facs = [1] * n
+        for i in range(2, n):
             facs[i] = i * facs[i-1]
         nums = range(1, n+1)
         ret, k = [], k-1
