@@ -5,20 +5,16 @@ class Solution(object):
         :type k: int
         :rtype: str
         """
-        def bt(nums, used, idx):
-            if self.cnt == k:
-                self.tar = ''.join(str(i) for i in nums)
-                return
-            if idx == n:
-                self.cnt += 1
-                bt(nums, used, 0)
-            for i in range(n):
-                if not used[i] and not self.tar:
-                    nums[idx] = i+1
-                    used[i] = True
-                    bt(nums, used, idx+1)
-                    used[i] = False
-        m = reduce(lambda x,y:x*y, range(1,n+1), 1)
-        self.cnt, self.tar = 0, None
-        bt([0]*n, [False]*n, 0)
-        return self.tar
+        facs = [1] * (n+1)
+        for i in range(2, n+1):
+            facs[i] = i * facs[i-1]
+        nums = range(1, n+1)
+        ret, k = [], k-1
+        for i in range(1, n+1):
+            idx = k / facs[n-i]
+            ret.append(nums.pop(idx))
+            k -= idx * facs[n-i]
+        return ''.join(str(i) for i in ret)
+
+
+print Solution().getPermutation(3, 5)
