@@ -24,4 +24,26 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
+        if head is None or k == 0:
+            return head
+        p, num = head, 0
+        while p:
+            p = p.next
+            num += 1
+        cnt = k % num
+        if cnt == 0:
+            return head
+            
+        dummy = ListNode(-1)
+        dummy.next = head
+        p1, p2, idx = head, head, 0
+        while p2.next:
+            p2 = p2.next
+            if idx >= cnt:
+                p1 = p1.next
+            idx += 1
+        p2.next = dummy.next
+        dummy.next = p1.next
+        p1.next = None
+        return dummy.next
 ```
