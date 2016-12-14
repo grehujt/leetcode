@@ -47,3 +47,30 @@ class Solution(object):
         p1.next = None
         return dummy.next
 ```
+
+```python
+class Solution(object):
+    def rotateRight(self, head, k):
+        """
+        :type head: ListNode
+        :type k: int
+        :rtype: ListNode
+        """
+        if head is None or k == 0:
+            return head
+        tail, num = head, 1
+        while tail.next:
+            tail = tail.next
+            num += 1
+        cnt = k % num
+        if cnt == 0:
+            return head
+            
+        tail.next = head  # make a circle
+        for i in range(num-cnt): # find tail's final position
+            tail = tail.next
+
+        head = tail.next
+        tail.next = None
+        return head
+```
