@@ -22,6 +22,8 @@
 - Note: m and n will be at most 100.
 
 ## Solution
+- O(mn) in time & space:
+
 ```python
 class Solution(object):
     def uniquePathsWithObstacles(self, obstacleGrid):
@@ -39,6 +41,22 @@ class Solution(object):
             dp[0][i] = 1
         for i in range(1, m):
             for j in range(1, n):
-                dp[i][j] = dp[i-1][j] + dp[i][j-1] if obstacleGrid[i][j] == 0 else 0
+                if obstacleGrid[i][j] == 0:
+                    dp[i][j] = dp[i-1][j] + dp[i][j-1]
+        return dp[-1][-1]
+```
+
+- O(mn) in time & space, shorter
+
+```python
+class Solution(object):
+    def uniquePathsWithObstacles(self, obstacleGrid):
+        m, n = len(obstacleGrid), len(obstacleGrid[0])
+        dp = [[0]*(n+1) for _ in range(m+1)]
+        dp[0][1] = 1  ##
+        for i in range(1, m+1):
+            for j in range(1, n+1):
+                if obstacleGrid[i-1][j-1] == 0:
+                    dp[i][j] = dp[i-1][j] + dp[i][j-1]
         return dp[-1][-1]
 ```
