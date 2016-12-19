@@ -60,3 +60,20 @@ class Solution(object):
                     dp[i][j] = dp[i-1][j] + dp[i][j-1]
         return dp[-1][-1]
 ```
+
+- O(mn) in time & O(n) in space, ref from [here](https://discuss.leetcode.com/topic/10974/short-java-solution/2)
+
+```python
+class Solution(object):
+    def uniquePathsWithObstacles(self, obstacleGrid):
+        m, n = len(obstacleGrid), len(obstacleGrid[0])
+        dp = [0] * n  # dp[j] is the paths number to column j in the current row
+        dp[0] = 1
+        for row in obstacleGrid:
+            for j in range(n):
+                if row[j] == 1:
+                    dp[j] = 0
+                elif j > 0:
+                    dp[j] += dp[j-1]
+        return dp[-1]
+```
