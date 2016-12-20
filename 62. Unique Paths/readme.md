@@ -21,3 +21,14 @@ class Solution(object):
                 dp[i][j] = dp[i-1][j] + dp[i][j-1]
         return dp[-1][-1]
 ```
+
+```python
+class Solution(object):
+    def uniquePaths(self, m, n):
+        dp = [0] * n
+        dp[0] = 1
+        for _ in range(m):
+            for j in range(1, n):
+                dp[j] += dp[j-1]
+        return dp[-1]
+```
