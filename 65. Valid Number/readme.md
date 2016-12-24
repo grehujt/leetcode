@@ -25,5 +25,10 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
+        try:
+            float(s)
+            return True
+        except:
+            return False
 ```
 
