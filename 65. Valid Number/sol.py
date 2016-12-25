@@ -1,42 +1,4 @@
-# 65. Valid Number
 
-## Problem
-- Validate if a given string is numeric.
-
-> Some examples:
-> 
-> "0" => true
-> 
-> " 0.1 " => true
-> 
-> "abc" => false
-> 
-> "1 a" => false
-> 
-> "2e10" => true
-
-- Note: It is intended for the problem statement to be ambiguous. You should gather all requirements up front before implementing one.
-
-## Solution
-```python
-class Solution(object):
-    def isNumber(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        try:
-            float(s)
-            return True
-        except:
-            return False
-```
-
-DFA solution, from [ref](https://discuss.leetcode.com/topic/30058/a-simple-solution-in-python-based-on-dfa):
-
-![pic](pic.png)
-
-```python
 class Solution(object):
     def isNumber(self, s):
         """
@@ -64,4 +26,3 @@ class Solution(object):
                 return False
             cur = states[cur][c]
         return cur in [2, 4, 7, 8]
-```
