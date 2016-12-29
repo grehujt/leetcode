@@ -58,7 +58,6 @@ class Solution(object):
                 ret.append(process_row(row, rowLen))
                 row = [words[i]]
                 rowLen = len(words[i])
-        if row:
-            ret.append(process_row(row, rowLen, isLast=True))
+        ret.append(process_row(row, rowLen, isLast=True))
         return ret
 ```
