@@ -61,3 +61,21 @@ class Solution(object):
         ret.append(process_row(row, rowLen, isLast=True))
         return ret
 ```
+
+[ref](https://discuss.leetcode.com/topic/25970/concise-python-solution-10-lines)
+```python
+class Solution(object):
+    def fullJustify(self, words, maxWidth):
+        ret, row, rowLen = [], [], 0
+        for w in words:
+            if rowLen + len(row) + len(w) > maxWidth:
+                for i in range(maxWidth-rowLen):
+                    row[i % (len(row)-1 or 1)] += ' '
+                ret.append(''.join(row))
+                row, rowLen = [w], len(w)
+            else:
+                row.append(w)
+                rowLen += len(w)
+        ret.append(' '.join(row).ljust(maxWidth))
+        return ret
+```
