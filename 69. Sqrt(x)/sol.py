@@ -1,11 +1,3 @@
-# 69. Sqrt(x)
-
-## Problem
-- Implement int sqrt(int x).
-- Compute and return the square root of x.
-
-## Solution
-```python
 class Solution(object):
     def mySqrt(self, x):
         """
@@ -18,4 +10,5 @@ class Solution(object):
             if mid*mid == x: return mid
             beg, end = (beg, mid) if mid*mid > x else (mid, end)
         return end if end*end <= x else beg
-```
+
+print Solution().mySqrt(10)
