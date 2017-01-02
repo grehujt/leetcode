@@ -19,3 +19,13 @@ class Solution(object):
             beg, end = (beg, mid) if mid*mid > x else (mid, end)
         return end if end*end <= x else beg
 ```
+
+Newton's method:
+```python
+class Solution(object):
+    def mySqrt(self, x):
+        ret = x
+        while ret*ret > x:
+            ret = (ret + x/ret) >> 1
+        return ret
+```
