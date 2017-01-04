@@ -12,4 +12,9 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        a, b = 1, 1
+        while n:
+            a, b = b, a+b
+            n -= 1
+        return a
 ```
