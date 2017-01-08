@@ -17,4 +17,11 @@ class Solution(object):
         :type word2: str
         :rtype: int
         """
+        # dp[i][j]: min # of steps for word1[:i] coverting to word2[:j]
+        # dp[i][j] = min (
+        #   1. insert, dp[i][j-1] + 1
+        #   2. delete, dp[i-1][j] + 1
+        #   3. replace, dp[i-1][j-1] + (1 if w1[i-1]!=w2[j-1] else 0)
+        # )
+
 ```
