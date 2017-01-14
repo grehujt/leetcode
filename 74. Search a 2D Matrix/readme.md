@@ -29,4 +29,12 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
+        if matrix and matrix[0]:
+            an0 = bisect.bisect([arr[0] for arr in matrix], target)
+            if matrix[an0-1][0] == target:
+                return True
+            an1 = bisect.bisect(matrix[an0-1], target)
+            if matrix[an0-1][an1-1] == target:
+                return True
+        return False
 ```
