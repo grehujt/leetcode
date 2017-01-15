@@ -38,3 +38,26 @@ class Solution(object):
                 return True
         return False
 ```
+
+```python
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        if matrix and matrix[0]:
+            m, n = len(matrix), len(matrix[0])
+            beg, end = 0, m*n-1
+            while beg <= end:
+                mid = (beg + end) >> 1
+                num = matrix[mid/n][mid%n]
+                if num == target:
+                    return True
+                if num > target:
+                    end = mid-1
+                else:
+                    beg = mid+1
+        return False
+```
