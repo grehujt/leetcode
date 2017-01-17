@@ -14,4 +14,14 @@ class Solution(object):
         :type nums: List[int]
         :rtype: void Do not return anything, modify nums in-place instead.
         """
+        r, w, b = 0, 0, 0
+        for n in nums:
+            nums[b] = 2
+            b += 1
+            if n < 2:
+                nums[w] = 1
+                w += 1
+            if n < 1:
+                nums[r] = 0
+                r += 1
 ```
