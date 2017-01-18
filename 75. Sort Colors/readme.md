@@ -25,3 +25,21 @@ class Solution(object):
                 nums[r] = 0
                 r += 1
 ```
+
+_Dutch national flag problem_
+_three-way-partition_
+```python
+class Solution(object):
+    def sortColors(self, nums):
+        left, i, right = 0, 0, len(nums)-1
+        while i <= right:
+            if nums[i] < 1:
+                nums[left], nums[i] = nums[i], nums[left]
+                left += 1
+                i += 1
+            elif nums[i] > 1: # i not increase, might not be strict one-pass
+                nums[i], nums[right] = nums[right], nums[i]
+                right -= 1
+            else:
+                i += 1
+```
