@@ -24,6 +24,8 @@
 > ]
 
 ## Solution
+
+TLE..
 ```python
 class Solution(object):
     def combine(self, n, k):
@@ -32,4 +34,24 @@ class Solution(object):
         :type k: int
         :rtype: List[List[int]]
         """
+        def _bt(ret, arr, used, i, last):
+            if i == k:
+                ret.append(copy.copy(arr))
+                return
+            for d in range(i, n):
+                if used[d] == 0 and d > last:
+                    arr[i] = d+1
+                    used[d] = 1
+                    _bt(ret, arr, used, i+1, d)
+                    used[d] = 0
+        ret = []
+        _bt(ret,[0]*k, [0]*n, 0, -1)
+        return ret
+```
+
+AC:
+```python
+class Solution(object):
+    def combine(self, n, k):
+        return list(itertools.combinations(range(1,n+1), k))
 ```
