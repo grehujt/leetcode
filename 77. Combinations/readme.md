@@ -49,6 +49,23 @@ class Solution(object):
         return ret
 ```
 
+TLE:
+```python
+class Solution(object):
+    def combine(self, n, k):
+        def _dfs(ret, arr, i):
+            if len(arr) == k:
+                ret.append(copy.copy(arr))
+                return
+            for d in range(i, n):
+                arr.append(d+1)
+                _dfs(ret, arr, d+1)
+                arr.pop()
+        ret = []
+        _dfs(ret, [], 0)
+        return ret
+```
+
 AC:
 ```python
 class Solution(object):
