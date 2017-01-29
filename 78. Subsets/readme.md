@@ -35,4 +35,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        ret = [[], nums]
+        for i in xrange(len(nums)-1):
+            ret.extend(list(l) for l in itertools.combinations(nums, i+1))
+        return ret
 ```
