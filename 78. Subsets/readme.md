@@ -40,3 +40,28 @@ class Solution(object):
             ret.extend(list(l) for l in itertools.combinations(nums, i+1))
         return ret
 ```
+
+[ref](https://discuss.leetcode.com/topic/19561/python-easy-to-understand-solutions-dfs-recursively-bit-manipulation-iteratively/2)
+DFS:
+```python
+class Solution(object):
+    def subsets(self, nums):
+        def _dfs(ret, arr, beg):
+            ret.append(arr)
+            for i in range(beg, len(nums)):
+                _dfs(ret, arr+[nums[i]], i+1)
+        ret = []
+        _dfs(ret, [], 0)
+        return ret
+```
+
+[ref](https://discuss.leetcode.com/topic/19561/python-easy-to-understand-solutions-dfs-recursively-bit-manipulation-iteratively/2)
+Iterative:
+```python
+class Solution(object):
+    def subsets(self, nums):
+        ret = [[]]
+        for n in nums:
+            ret += [l+[n] for l in ret]
+        return ret
+```
