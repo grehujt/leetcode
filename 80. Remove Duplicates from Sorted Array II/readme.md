@@ -17,4 +17,11 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        if len(nums) <= 2: return len(nums)
+        i, j = 1, 2
+        while j < len(nums):
+            nums[i+1] = nums[j]
+            i += nums[i] != nums[j] or nums[i-1] != nums[i]
+            j += 1
+        return i+1
 ```
