@@ -25,3 +25,15 @@ class Solution(object):
             j += 1
         return i+1
 ```
+
+[ref](https://discuss.leetcode.com/topic/17180/3-6-easy-lines-c-java-python-ruby/2)
+```python
+class Solution(object):
+    def removeDuplicates(self, nums):
+        i = 0
+        for n in nums:
+            if i < 2 or n > nums[i-2]:
+                nums[i] = n
+                i += 1
+        return i
+```
