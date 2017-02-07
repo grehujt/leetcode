@@ -51,3 +51,32 @@ class Solution(object):
                 return _binary_search(0, len(nums)-1)
         return False
 ```
+
+[ref](https://discuss.leetcode.com/topic/310/when-there-are-duplicates-the-worst-case-is-o-n-could-we-do-better)
+```python
+class Solution(object):
+    def search(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: bool
+        """
+        beg, end = 0, len(nums)-1
+        while beg <= end:
+            if nums[beg] == target or nums[end] == target: return True
+            mid = (beg+end) >> 1
+            if nums[mid] == target: return True
+            if nums[beg] < nums[mid]:  # beg..mid is sorted
+                if nums[beg] < target < nums[mid]:
+                    end = mid-1
+                else:
+                    beg = mid+1
+            elif nums[beg] > nums[mid]:  # mid..end is sorted
+                if nums[mid] < target < nums[end]:
+                    beg = mid+1
+                else:
+                    end = mid-1
+            else:
+                beg += 1
+        return False
+```
