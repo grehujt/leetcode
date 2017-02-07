@@ -46,7 +46,7 @@ class Solution(object):
             if an is not None:
                 if target == nums[an]: return True
                 if target > nums[an]: return False
-                return _binary_search(0, an) or _binary_search(an+1, len(nums)-1)
+                return _binary_search(0, an) if nums[0]<=target<nums[an] else _binary_search(an+1, len(nums)-1)
             else:
                 return _binary_search(0, len(nums)-1)
         return False
