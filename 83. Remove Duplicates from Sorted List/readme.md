@@ -23,4 +23,13 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        if head is None: return
+        pre, cur = head, head.next
+        while cur:
+            if cur.val != pre.val:
+                pre.next = cur
+                pre = cur
+            cur = cur.next
+            pre.next = None
+        return head
 ```
